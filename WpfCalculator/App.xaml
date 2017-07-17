@@ -1,0 +1,9 @@
+﻿<Application x:Class="WpfCalculator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:calculator="clr-namespace:WpfCalculator"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <calculator:CalculatorService x:Key="ViewModel" />
+    </Application.Resources>
+</Application>

@@ -1,0 +1,319 @@
+﻿<Window
+    x:Class="WpfCalculator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Name="CalculatorWindow"
+    Title="MainWindow"
+    Width="360"
+    Height="530"
+    ResizeMode="CanMinimize">
+
+    <Window.Resources>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontStyle" Value="Oblique" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding
+            Key="Delete"
+            Command="{Binding FunctionCommand}"
+            CommandParameter="Del" />
+        <KeyBinding
+            Key="Backspace"
+            Command="{Binding FunctionCommand}"
+            CommandParameter="Del" />
+        <KeyBinding
+            Key="Esc"
+            Command="{Binding FunctionCommand}"
+            CommandParameter="C" />
+        <KeyBinding
+            Key="Add"
+            Command="{Binding OperationCommand}"
+            CommandParameter="+" />
+        <KeyBinding
+            Key="Subtract"
+            Command="{Binding OperationCommand}"
+            CommandParameter="-" />
+        <KeyBinding
+            Key="Multiply"
+            Command="{Binding OperationCommand}"
+            CommandParameter="*" />
+        <KeyBinding
+            Key="Divide"
+            Command="{Binding OperationCommand}"
+            CommandParameter="/" />
+
+        <KeyBinding
+            Key="OemPlus"
+            Command="{Binding OperationCommand}"
+            CommandParameter="+" />
+        <KeyBinding
+            Key="OemMinus"
+            Command="{Binding OperationCommand}"
+            CommandParameter="-" />
+        <KeyBinding
+            Key="D8"
+            Command="{Binding OperationCommand}"
+            CommandParameter="*"
+            Modifiers="Shift" />
+        <KeyBinding
+            Key="OemQuestion"
+            Command="{Binding OperationCommand}"
+            CommandParameter="/" />
+
+        <KeyBinding
+            Key="NumPad1"
+            Command="{Binding NumberCommand}"
+            CommandParameter="1" />
+        <KeyBinding
+            Key="NumPad2"
+            Command="{Binding NumberCommand}"
+            CommandParameter="2" />
+        <KeyBinding
+            Key="NumPad3"
+            Command="{Binding NumberCommand}"
+            CommandParameter="3" />
+        <KeyBinding
+            Key="NumPad4"
+            Command="{Binding NumberCommand}"
+            CommandParameter="4" />
+        <KeyBinding
+            Key="NumPad5"
+            Command="{Binding NumberCommand}"
+            CommandParameter="5" />
+        <KeyBinding
+            Key="NumPad6"
+            Command="{Binding NumberCommand}"
+            CommandParameter="6" />
+        <KeyBinding
+            Key="NumPad7"
+            Command="{Binding NumberCommand}"
+            CommandParameter="7" />
+        <KeyBinding
+            Key="NumPad8"
+            Command="{Binding NumberCommand}"
+            CommandParameter="8" />
+        <KeyBinding
+            Key="NumPad9"
+            Command="{Binding NumberCommand}"
+            CommandParameter="9" />
+        <KeyBinding
+            Key="NumPad0"
+            Command="{Binding NumberCommand}"
+            CommandParameter="0" />
+
+        <KeyBinding
+            Key="D1"
+            Command="{Binding NumberCommand}"
+            CommandParameter="1" />
+        <KeyBinding
+            Key="D2"
+            Command="{Binding NumberCommand}"
+            CommandParameter="2" />
+        <KeyBinding
+            Key="D3"
+            Command="{Binding NumberCommand}"
+            CommandParameter="3" />
+        <KeyBinding
+            Key="D4"
+            Command="{Binding NumberCommand}"
+            CommandParameter="4" />
+        <KeyBinding
+            Key="D5"
+            Command="{Binding NumberCommand}"
+            CommandParameter="5" />
+        <KeyBinding
+            Key="D6"
+            Command="{Binding NumberCommand}"
+            CommandParameter="6" />
+        <KeyBinding
+            Key="D7"
+            Command="{Binding NumberCommand}"
+            CommandParameter="7" />
+        <KeyBinding
+            Key="D8"
+            Command="{Binding NumberCommand}"
+            CommandParameter="8" />
+        <KeyBinding
+            Key="D9"
+            Command="{Binding NumberCommand}"
+            CommandParameter="9" />
+        <KeyBinding
+            Key="D0"
+            Command="{Binding NumberCommand}"
+            CommandParameter="0" />
+
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="First num" />
+        <TextBox Grid.Row="0" Text="{Binding FirstNumber}" />
+
+        <TextBlock Grid.Row="1" Text="Operation" />
+        <TextBox
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Text="{Binding Operation}" />
+
+        <TextBlock Grid.Row="2" Text="Second num" />
+        <TextBox Grid.Row="2" Text="{Binding SecondNumber}" />
+
+        <TextBlock Grid.Row="3" Text="Result" />
+        <TextBox Grid.Row="3" Text="{Binding ResultNumber}" />
+
+        <Grid Grid.Row="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Command="{Binding FunctionCommand}"
+                CommandParameter="C"
+                Content="C" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Command="{Binding FunctionCommand}"
+                CommandParameter="Del"
+                Content="Del" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Command="{Binding NumberCommand}"
+                CommandParameter="1"
+                Content="1" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding NumberCommand}"
+                CommandParameter="2"
+                Content="2" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                Command="{Binding NumberCommand}"
+                CommandParameter="3"
+                Content="3" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                Command="{Binding NumberCommand}"
+                CommandParameter="4"
+                Content="4" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                Command="{Binding NumberCommand}"
+                CommandParameter="5"
+                Content="5" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="2"
+                Command="{Binding NumberCommand}"
+                CommandParameter="6"
+                Content="6" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding NumberCommand}"
+                CommandParameter="7"
+                Content="7" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{Binding NumberCommand}"
+                CommandParameter="8"
+                Content="8" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="2"
+                Command="{Binding NumberCommand}"
+                CommandParameter="9"
+                Content="9" />
+            <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                Command="{Binding FunctionCommand}"
+                CommandParameter="ChangeSign"
+                Content="+-" />
+            <Button
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Command="{Binding NumberCommand}"
+                CommandParameter="0"
+                Content="0" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="3"
+                Command="{Binding OperationCommand}"
+                CommandParameter="/"
+                Content="/" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="3"
+                Command="{Binding OperationCommand}"
+                CommandParameter="*"
+                Content="x" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="3"
+                Command="{Binding OperationCommand}"
+                CommandParameter="+"
+                Content="+" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="3"
+                Command="{Binding OperationCommand}"
+                CommandParameter="-"
+                Content="-" />
+            <Button
+                Grid.Row="4"
+                Grid.Column="3"
+                Command="{Binding EqualsCommand}"
+                CommandParameter="="
+                Content="=" />
+
+        </Grid>
+    </Grid>
+</Window>
